@@ -1,0 +1,38 @@
+--Задание 1
+select [name], salary
+from [dbo].[employee]
+where salary = (select max(salary) from [dbo].[employee])
+--Задание 2
+DECLARE @Deep int
+DECLARE @MaxDeep int
+DECLARE @EmployeeID int
+DECLARE @EmployeeCount int
+set @Deep = 0
+SET @MaxDeep = 0
+SET @EmployeeCount = (select min(Id) from [dbo].[employee])
+WHILE @EmployeeCount < (select max(Id) from [dbo].[employee])
+begin 
+set @EmployeeID = @EmployeeCount
+WHILE (select [chief_id] from [dbo].[employee] where [Id] = @EmployeeID) IS NOT NULL
+BEGIN 
+SET @Deep = @Deep + 1
+SET @EmployeeID = (select [chief_id] from [dbo].[employee] where [Id] = @EmployeeID)
+END
+if @MaxDeep < @Deep
+begin 
+set @MaxDeep = @Deep
+end
+set @Deep = 0
+set @EmployeeCount = @EmployeeCount + 1
+end
+print @MaxDeep
+--Задание 3
+select top(1) d.[Name], sum([salary])
+from [dbo].[departament] as d join [dbo].[employee] as e
+on d.Id=e.departament_id
+group by d.[Name]
+order by sum([salary]) desc
+--Задание 4
+select [name] 
+from [dbo].[employee]
+where [name] like 'Р%н'
