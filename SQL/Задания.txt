@@ -27,7 +27,7 @@ set @EmployeeCount = @EmployeeCount + 1
 end
 print @MaxDeep
 --Задание 3
-select top(1) d.[Name], sum([salary])
+select top(1) WITH TIES d.[Name], sum([salary])
 from [dbo].[departament] as d join [dbo].[employee] as e
 on d.Id=e.departament_id
 group by d.[Name]
