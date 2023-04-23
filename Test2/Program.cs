@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Remoting.Messaging;
 
+
 namespace Test2
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string path = "C:/Users/gumba/OneDrive/Рабочий стол/text.txt";
+            string path = "C:/Users/gumba/OneDrive/Рабочий стол/text.txt";//Здесь укажите путь к файлу
 
             using (StreamReader reader = new StreamReader(path))
             {
