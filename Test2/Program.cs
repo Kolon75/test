@@ -15,6 +15,7 @@ namespace Test2
         {
             string path = "C:/Users/gumba/OneDrive/Рабочий стол/text.txt";//Здесь укажите путь к файлу
 
+
             using (StreamReader reader = new StreamReader(path))
             {
                 string text = reader.ReadToEnd();
