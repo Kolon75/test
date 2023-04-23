@@ -14,6 +14,10 @@ namespace Test2
         static void Main(string[] args)
         {
             string path = "C:/Users/gumba/OneDrive/Рабочий стол/text.txt";//Здесь укажите путь к файлу
+            string path2 = "C:/Users/gumba/OneDrive/Рабочий стол/text2.txt";//Здесь укажите путь куда выгрузить файл
+           
+
+
 
             using (StreamReader reader = new StreamReader(path))
             {
@@ -62,8 +66,17 @@ namespace Test2
                     {
                         Console.WriteLine(words[i] + " " + count[i]);
                     }
+                }              
+                for (int i = 0; i < words.Length; i++)
+                {
+                    if (words[i] != null && words[i] != "")
+                    {
+                        File.AppendAllText(path2, words[i] + " " + count[i] + "\n");
+                    }
                 }
+                
             }   
+
             Console.ReadKey();
         }
     }
